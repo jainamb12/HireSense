@@ -1,0 +1,36 @@
+Folder PATH listing for volume Windows-SSD
+Volume serial number is 822D-D203
+C:.
+|   .env
+|   index.js
+|   package-lock.json
+|   package.json
+|   structure.txt
+|   
++---controllers
+|       application.controller.js
+|       company.controller.js
+|       job.controller.js
+|       user.controller.js
+|       
++---middlewares
+|       isAuthenticated.js
+|       multer.js
+|       
++---models
+|       application.model.js
+|       company.model.js
+|       job.model.js
+|       user.model.js
+| 
++---routes
+|       application.route.js
+|       company.route.js
+|       job.route.js
+|       user.route.js
+|       
+\---utils
+        cloudinary.js
+        datauri.js
+        db.js
+        

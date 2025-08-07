@@ -1,0 +1,138 @@
+// import React from "react";
+// import { Button } from "./ui/button";
+// import { Bookmark } from "lucide-react";
+// import { Badge } from "./ui/badge";
+// import { Avatar, AvatarImage } from "./ui/avatar";
+// import { useNavigate } from "react-router-dom";
+
+// const Job = ({job}) => {
+//   const navigate = useNavigate()
+//   // const jobid = "dlfzdnffwfskhfsvskfjgfkhgf"
+
+//   const daysAgoFunction = (mongodbTime) => {
+//     const createdAt = new Date(mongodbTime);
+//     const now = new Date();
+//     const timeDifference = now - createdAt
+//     return Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+//   }
+//   return (
+//     <div className="p-5 rounded-md shadow-xl bg-white border-gray-100">
+//       <div className="flex items-center justify-between">
+//         <p className="text-sm text-gray-500">{daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}</p>
+//         <Button variant="outline" className="rounded-full" size="icon">
+//           <Bookmark />
+//         </Button>
+//       </div>
+//       <div className="flex items-center gap-2 my-2">
+//         <Button>
+//           <Avatar>
+//             <AvatarImage src={job?.company?.logo} className="w-full h-full object-cover object-center"/>
+//           </Avatar>
+//         </Button>
+//         <div>
+//           <h1 className="font-medium text-lg">{job?.company?.name}</h1>
+//           <p className="text-sm text-gray-500">India</p>
+//         </div>
+//       </div>
+//       <div>
+//         <h1 className="font-bold text-lg my-2">{job?.title}</h1>
+//         <p className="text-sm text-gray-600">
+//           {job?.description}
+//         </p>
+//       </div>
+//       <div className="flex items-center gap-2 mt-4">
+//         <Badge className="text-blue-700 font-bold" variant="ghost">
+//           {job?.position} Positions
+//         </Badge>
+//         <Badge className="text-[#F83002] font-bold" variant="ghost">
+//           {job?.jobType}
+//         </Badge>
+//         <Badge className="text-[#7209b7] font-bold" variant="ghost">
+//            {job?.salary} LPA
+//         </Badge>
+//       </div>
+//       <div className="flex-item-center gap-4 mt-4">
+//         <Button onClick = {() => navigate(`/description/${job?._id || job?.id}`)} className="cursor-pointer" variant="outline">Details</Button>
+//         <Button className="bg-[#7209b7] cursor-pointer">Save For Later</Button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Job;
+
+
+
+import React from "react";
+import { Button } from "./ui/button";
+import { Bookmark } from "lucide-react";
+import { Badge } from "./ui/badge";
+import { Avatar, AvatarImage } from "./ui/avatar"; // Your Avatar component
+import { useNavigate } from "react-router-dom";
+
+const Job = ({job}) => {
+  const navigate = useNavigate()
+
+  const daysAgoFunction = (mongodbTime) => {
+    const createdAt = new Date(mongodbTime);
+    const now = new Date();
+    const timeDifference = now - createdAt
+    return Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+  }
+  return (
+    <div className="p-5 rounded-md shadow-xl bg-white border-gray-100">
+      <div className="flex items-center justify-between">
+        <p className="text-sm text-gray-500">{daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}</p>
+        <Button variant="outline" className="rounded-full" size="icon">
+          <Bookmark />
+        </Button>
+      </div>
+      <div className="flex items-center gap-2 my-2">
+        {/*
+          IMPORTANT:
+          The <Button> around <Avatar> might be causing some styling conflicts or unnecessary wrappers.
+          Typically, an Avatar component is used directly. If the <Button> is for clickability,
+          you can make the Avatar itself clickable or wrap the entire Avatar component in a button
+          like structure if absolutely necessary.
+          For solving the logo fit issue, we focus on the AvatarImage itself.
+        */}
+        <Button className="p-0 rounded-full w-16 h-16 overflow-hidden flex items-center justify-center"> {/* Adjust Button to act as the circular container */}
+          <Avatar className="w-full h-full rounded-full"> {/* Ensure Avatar spans the Button's size */}
+            <AvatarImage
+              src={job?.company?.logo}
+              alt={`${job?.company?.name} Logo`}
+              className="w-full h-full object-cover object-center" // <-- ADD THESE CLASSES HERE
+            />
+          </Avatar>
+        </Button>
+        <div>
+          <h1 className="font-medium text-lg">{job?.company?.name}</h1>
+          <p className="text-sm text-gray-500">India</p>
+        </div>
+      </div>
+      <div>
+        <h1 className="font-bold text-lg my-2">{job?.title}</h1>
+        <p className="text-sm text-gray-600">
+          {job?.description}
+        </p>
+      </div>
+      <div className="flex items-center gap-2 mt-4">
+        <Badge className="text-blue-700 font-bold" variant="ghost">
+          {job?.position} Positions
+        </Badge>
+        <Badge className="text-[#F83002] font-bold" variant="ghost">
+          {job?.jobType}
+        </Badge>
+        <Badge className="text-[#7209b7] font-bold" variant="ghost">
+           {job?.salary} LPA
+        </Badge>
+      </div>
+      <div className="flex-item-center gap-4 mt-4">
+        <Button onClick = {() => navigate(`/description/${job?._id || job?.id}`)} className="cursor-pointer" variant="outline">Details</Button>
+        <Button className="bg-[#7209b7] cursor-pointer">Save For Later</Button>
+      </div>
+    </div>
+  );
+};
+
+export default Job;

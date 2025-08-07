@@ -1,0 +1,94 @@
+Folder PATH listing for volume Windows-SSD
+Volume serial number is 822D-D203
+C:.
+|   .gitignore
+|   components.json
+|   eslint.config.js
+|   index.html
+|   jsconfig.json
+|   package-lock.json
+|   package.json
+|   README.md
+|   structure.txt
+|   vite.config.js
++---public
+|       vite.svg
+|       
+\---src
+    |   App.css
+    |   App.jsx
+    |   index.css
+    |   main.jsx
+    |   
+    +---assets
+    |       react.svg
+    |       
+    +---components
+    |   |   AppliedJobTable.jsx
+    |   |   Browse.jsx
+    |   |   CategoryCarousel.jsx
+    |   |   FilterCard.jsx
+    |   |   HerSection.jsx
+    |   |   Home.jsx
+    |   |   Job.jsx
+    |   |   JobDescription.jsx
+    |   |   Jobs.jsx
+    |   |   LatestJobCards.jsx
+    |   |   LatestJobs.jsx
+    |   |   Profile.jsx
+    |   |   UpdateProfileDialog.jsx
+    |   |   
+    |   +---admin
+    |   |       AdminJobs.jsx
+    |   |       AdminJobsTable.jsx
+    |   |       Applicants.jsx
+    |   |       ApplicantsTable.jsx
+    |   |       Companies.jsx
+    |   |       CompaniesTable.jsx
+    |   |       CompanyCreate.jsx
+    |   |       CompanySetup.jsx
+    |   |       PostJob.jsx
+    |   |       ProtectedRoute.jsx
+    |   |       
+    |   \---ui
+    |       |   avatar.jsx
+    |       |   badge.jsx
+    |       |   button.jsx
+    |       |   carousel.jsx
+    |       |   dialog.jsx
+    |       |   input.jsx
+    |       |   label.jsx
+    |       |   popover.jsx
+    |       |   radio-group.jsx
+    |       |   select.jsx
+    |       |   sonner.jsx
+    |       |   table.jsx
+    |       |   
+    |       +---auth
+    |       |       Login.jsx
+    |       |       Signup.jsx
+    |       |       
+    |       \---shared
+    |               Footer.jsx
+    |               Navbar.jsx
+    |               
+    +---hooks
+    |       useGetAllAdminJobs.jsx
+    |       useGetAllCompanies.jsx
+    |       useGetAllJobs.jsx
+    |       useGetAppliedJobs.jsx
+    |       useGetCompanyById.jsx
+    |       
+    +---lib
+    |       utils.js
+    |       
+    +---redux
+    |       applicationSlice.js
+    |       authSlice.js
+    |       companySlice.js
+    |       jobSlice.js
+    |       store.js
+    |       
+    \---utils
+            constant.js
+            
