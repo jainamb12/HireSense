@@ -70,7 +70,7 @@ useEffect(() => {
             {filteredJobs.length <= 0 ? (
               <span>Job not found</span>
             ) : (
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
                 {filteredJobs.map((job) => (
                   <motion.div
                   initial={{opacity:0, x:100}}

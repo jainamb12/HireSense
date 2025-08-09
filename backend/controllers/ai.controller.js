@@ -119,3 +119,28 @@ export const matchJobs = async (req, res, next) => {
     next(err);
   }
 };
+
+
+export const analyzeResumeFit = async (req, res, next) => {
+  try {
+    const { resume_url, job_description } = req.body;
+
+    if (!resume_url || !job_description) {
+      return res.status(400).json({ message: "Resume URL and job description are required." });
+    }
+
+    // Call the new FastAPI endpoint
+    const { data } = await axios.post(`${AI_BASE}/analyze-resume-fit`, {
+      resume_url,
+      job_description,
+    });
+
+    return res.json(data);
+  } catch (err) {
+    // Log the error for debugging
+    console.error("FastAPI Error:", err.response?.data || err.message);
+
+    // Pass the error to the next middleware
+    next(err); 
+  }
+};
