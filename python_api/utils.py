@@ -3,7 +3,8 @@ import spacy
 import requests
 from io import BytesIO
 from pdfminer.high_level import extract_text
-
+from pymongo import MongoClient
+import os
 # --- Shared Resources: SpaCy Model and Skills List ---
 try:
     nlp = spacy.load("en_core_web_sm")
@@ -39,6 +40,10 @@ TECH_SKILLS = {
     "creative", "analytical",
 }
 
+# --- MongoDB Client Setup ---
+client = MongoClient("mongodb+srv://jainam121005:0ds1WTpR1V7qZeBy@cluster0.1zstuon.mongodb.net/")
+db = client['test'] # Replace with your database name
+job_collection = db['jobs'] # Replace with your job collection name
 # --- Shared Utility Functions ---
 def download_file(url: str) -> BytesIO:
     """Downloads a file from a URL and returns it as a BytesIO object."""

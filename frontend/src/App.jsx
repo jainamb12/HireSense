@@ -15,6 +15,7 @@ import PostJob from './components/admin/PostJob'
 import Applicants from './components/admin/Applicants'
 import ProtectedRoute from './components/admin/ProtectedRoute'
 import UserProtectedRoute from './components/UserProtectedRoute'
+import JobAnalyticsDashboard from './components/admin/JobAnalyticsDashboard'
 
 const appRouter = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
   {
     path:'/jobs',
     element:<UserProtectedRoute><Jobs/></UserProtectedRoute>
+  },
+  {
+    path: '/analytics',
+    element: <UserProtectedRoute><JobAnalyticsDashboard/></UserProtectedRoute>
   },
   {
     path:'/description/:id',
@@ -70,6 +75,10 @@ const appRouter = createBrowserRouter([
   {
     path:'/admin/jobs/:id/applicants',
     element: <ProtectedRoute><Applicants/></ProtectedRoute>
+  },
+  {
+    path: '/admin/analytics',
+    element: <ProtectedRoute><JobAnalyticsDashboard/></ProtectedRoute>
   },
 ])
 

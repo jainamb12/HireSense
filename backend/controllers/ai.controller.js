@@ -144,3 +144,23 @@ export const analyzeResumeFit = async (req, res, next) => {
     next(err); 
   }
 };
+
+
+export const getJobAnalytics = async (req, res, next) => {
+  try {
+    const { location, job_type } = req.query;
+
+    // Call the FastAPI analytics endpoint with the filters
+    const { data } = await axios.get(`${AI_BASE}/job-analytics`, {
+      params: {
+        location,
+        job_type,
+      },
+    });
+
+    return res.json(data);
+  } catch (err) {
+    console.error("FastAPI Analytics Error:", err.response?.data || err.message);
+    next(err); 
+  }
+};

@@ -442,7 +442,7 @@
 #         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
 
 # main.py
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Query, HTTPException
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
 from datetime import datetime
@@ -450,7 +450,7 @@ from datetime import datetime
 # Import logic from your other modules
 from resume_matcher import match_resume_to_jobs
 from resume_analyzer import analyze_resume_fit as analyze_resume_fit_logic
-
+from job_analytics import get_job_analytics_data
 # --- FastAPI App ---
 app = FastAPI()
 
@@ -501,3 +501,14 @@ async def analyze_resume_fit_endpoint(request: ResumeAnalysisRequest):
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
+    
+@app.get("/job-analytics")
+def job_analytics_endpoint(
+    location: Optional[str] = Query('all'),
+    job_type: Optional[str] = Query('all')
+):
+    try:
+        analytics_data = get_job_analytics_data(location=location, job_type=job_type)
+        return analytics_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
