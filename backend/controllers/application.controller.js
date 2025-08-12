@@ -1,5 +1,3 @@
-// 
-
 import { Application } from "../models/application.model.js";
 import { Job } from "../models/job.model.js";
 
@@ -47,6 +45,8 @@ export const applyJob = async (req, res) => {
         console.log(error);
     }
 };
+
+
 export const getAppliedJobs = async (req,res) => {
     try {
         const userId = req.id;
@@ -72,6 +72,8 @@ export const getAppliedJobs = async (req,res) => {
         console.log(error);
     }
 }
+
+
 // admin dekhega kitna user ne apply kiya hai
 export const getApplicants = async (req,res) => {
     try {
@@ -97,6 +99,8 @@ export const getApplicants = async (req,res) => {
         console.log(error);
     }
 }
+
+
 export const updateStatus = async (req,res) => {
     try {
         const {status} = req.body;

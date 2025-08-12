@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setSingleCompany } from "../../redux/companySlice";
 
+
 const CompanyCreate = () => {
   const navigate = useNavigate();
   const [companyName, setCompanyName] = useState();
@@ -71,5 +72,6 @@ const CompanyCreate = () => {
     </div>
   );
 };
+
 
 export default CompanyCreate;

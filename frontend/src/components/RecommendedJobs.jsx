@@ -1,47 +1,3 @@
-// import { useMatchedJobs } from "../hooks/useMatchedJobs";
-// import JobCard from "./Job.jsx";          // existing card component
-// import { Badge } from "./ui/badge.jsx";
-
-// const RecommendedJobs = () => {
-//   const { matches, loading, error } = useMatchedJobs();
-
-//   if (loading) return <p className="p-4">Finding best jobs for you…</p>;
-//   if (error)   return <p className="p-4 text-red-600">{error}</p>;
-
-//   return (
-//     <section className="my-6">
-//       <h2 className="text-2xl font-semibold mb-4">Recommended Jobs</h2>
-//       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-//         {matches.map(job => (
-//   <div key={job._id || job.title} className="group">
-//     <JobCard job={job} />
-
-//     {/* Skill Coverage badge */}
-//     <Badge
-//       className="mt-1 mr-2"
-//       variant={
-//         job.skill_coverage >= 80 ? "success"
-//         : job.skill_coverage >= 50 ? "warning"
-//         : "secondary"
-//       }
-//     >
-//       {job.skill_coverage}% match
-//     </Badge>
-
-//     {/* Cosine similarity—muted small text */}
-//     <span className="text-xs text-muted-foreground">
-//       Relevence {job.cosine_score.toFixed(1)}
-//     </span>
-//   </div>
-// ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default RecommendedJobs;
-
-
 import { useMatchedJobs } from "../hooks/useMatchedJobs";
 import JobCard from "./Job.jsx";
 import { Badge } from "./ui/badge.jsx"; // Assuming this is your custom Badge component
@@ -86,9 +42,6 @@ const RecommendedJobs = () => {
         {matches.slice(0, 6).map(job => (
           <div key={job._id} className="group relative border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 p-4"> {/* Added padding directly to this div */}
             {/* The JobCard component will be rendered here */}
-            {/* IMPORTANT: Ensure your JobCard component does NOT have its own fixed padding
-                that would conflict with the 'p-4' added to the parent div here.
-                If it does, consider removing padding from JobCard or adjusting it. */}
             <JobCard job={job} />
 
             {/* Score Display Area - Now below the JobCard content */}

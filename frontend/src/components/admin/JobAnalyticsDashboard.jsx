@@ -1,5 +1,3 @@
-// components/admin/JobAnalyticsDashboard.jsx
-
 import React, { useState } from 'react';
 import Navbar from '../ui/shared/Navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card.jsx';

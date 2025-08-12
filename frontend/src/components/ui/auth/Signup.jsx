@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLoading } from "../../../redux/authSlice";
 import { useSelector } from "react-redux";
-import { Loader2 } from "lucide-react";;
+import { Loader2 } from "lucide-react";
+
+
 const Signup = () => {
 
   const [input, setInput] = useState({
@@ -161,5 +163,6 @@ const Signup = () => {
     </div>
   );
 };
+
 
 export default Signup;

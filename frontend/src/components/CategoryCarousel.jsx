@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSearchedQuery } from "../redux/jobSlice";
 
+
 const category = [
   "Frontend Developer",
   "Backend Developer",
@@ -45,5 +46,6 @@ const dispatch = useDispatch()
     </div>
   );
 };
+
 
 export default CategoryCarousel;

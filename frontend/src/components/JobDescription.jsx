@@ -8,6 +8,7 @@ import { setSingleJob } from "../redux/jobSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 
+
 const JobDescription = () => {
   const params = useParams();
   const jobId = params.id;
@@ -16,6 +17,7 @@ const JobDescription = () => {
   const dispatch = useDispatch();
   const isInitiallyApplied = singleJob?.applications?.some(application => application.applicant === user?._id) || false; // 
   const [isApplied, setIsApplied] = useState(isInitiallyApplied);
+
   const applyJobHandler = async () => {
     try{
       const res = await axios.get(`${APPLICATION_API_END_POINT}/apply/${jobId}`,{withCredentials:true})
@@ -31,6 +33,7 @@ const JobDescription = () => {
       toast.error(error.response.data.message)
     }
   }
+
   useEffect(()=>{
         const fetchSingleJob = async () => {
             try {
@@ -88,5 +91,6 @@ const JobDescription = () => {
     </div>
   );
 };
+
 
 export default JobDescription;

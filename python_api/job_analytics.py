@@ -1,16 +1,11 @@
-# job_analytics.py
-
 import pandas as pd
 from typing import Dict, Any, List, Optional
-from utils import job_collection, TECH_SKILLS # Import from your new utils.py
+from utils import job_collection, TECH_SKILLS
 
 def get_job_analytics_data(
     location: Optional[str] = 'all',
     job_type: Optional[str] = 'all'
 ) -> Dict[str, Any]:
-    """
-    Fetches job data from MongoDB and performs analysis using pandas.
-    """
     try:
         query_filter = {}
         if location and location != 'all':

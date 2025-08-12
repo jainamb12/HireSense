@@ -1,5 +1,3 @@
-// hooks/useAnalyzeResume.js
-
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -16,12 +14,13 @@ export const useAnalyzeResume = () => {
         resume_url: resumeUrl,
         job_description: jobDescription,
       }, {
-        // You may need to send authentication headers here
         withCredentials: true,
       });
       setData(response.data);
+
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred during analysis.');
+      
     } finally {
       setLoading(false);
     }

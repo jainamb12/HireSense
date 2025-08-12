@@ -21,6 +21,7 @@ const persistConfig = {
     storage,
 }
 
+
 const rootReducer = combineReducers({
     auth: authSlice,
     job: jobSlice,
@@ -28,7 +29,9 @@ const rootReducer = combineReducers({
     application:applicationSlice
 })
 
+
 const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 
 const store = configureStore({
     reducer: persistedReducer,

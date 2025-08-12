@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import Navbar from '../ui/shared/Navbar'
 import { Label } from '../ui/label'
@@ -179,5 +178,6 @@ const PostJob = () => {
         </div>
     )
 }
+
 
 export default PostJob

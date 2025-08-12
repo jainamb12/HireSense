@@ -1,6 +1,8 @@
 import React from 'react'
 import { Badge } from "@/components/ui/badge";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
+
 const LatestJobCards = ({job}) => {
   const navigate = useNavigate();
   return (
@@ -21,5 +23,6 @@ const LatestJobCards = ({job}) => {
     </div>
   )
 }
+
 
 export default LatestJobCards

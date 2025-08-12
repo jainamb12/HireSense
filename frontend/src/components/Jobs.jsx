@@ -11,29 +11,6 @@ const Jobs = () => {
   const {allJobs, searchedQuery} = useSelector(store => store.job)
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
 
-//   useEffect(() => {
-//   let filtered = allJobs;
-
-//   if (searchedQuery) {
-//     filtered = filtered.filter(job =>
-//       job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-//       job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-//       job.location.toLowerCase().includes(searchedQuery.toLowerCase())
-//     );
-//   }
-
-//   // salaryRange = "min-max" (e.g. "4-10")
-//   if (searchedQuery.includes('-')) {
-//    const [min, max] = searchedQuery.split('-').map(Number); 
-//    filtered = filtered.filter(job =>
-//      job.salary >= min && job.salary <= max
-//    );
-//  }
-
-//   setFilteredJobs(filtered);
-// }, [allJobs, searchedQuery]);
-
-
 useEffect(() => {
   let filtered = allJobs;
 
@@ -89,5 +66,6 @@ useEffect(() => {
     </div>
   );
 };
+
 
 export default Jobs;

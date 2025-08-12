@@ -1,6 +1,5 @@
 import { Job } from "../models/job.model.js";
 
-
 // hosted by admin
 export const postJob = async (req, res) => {
     try{
@@ -38,6 +37,7 @@ export const postJob = async (req, res) => {
     }
 }
 
+
 // for job seekers
 export const getAllJobs = async (req, res) => {
     try{
@@ -68,6 +68,7 @@ export const getAllJobs = async (req, res) => {
         console.log(error);
     }
 }
+
 
 // for job seekers
 export const getJobById = async (req, res) => {

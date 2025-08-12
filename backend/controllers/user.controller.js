@@ -16,10 +16,6 @@ export const register = async (req, res) => {
             });
         };
         const file = req.file;
-        // const fileUri = getDataUri(file);
-        // const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-        // const file = req.file;
-        // cloudinary ayega idhar
         let cloudResponse
         if(file){
             const fileUri = getDataUri(file);

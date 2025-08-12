@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import useGetCompanyById from "../../hooks/useGetCompanyById";
 import { useSelector } from "react-redux";
 
+
 const CompanySetup = () => {
 
   const params = useParams();
@@ -148,5 +149,6 @@ const CompanySetup = () => {
     </div>
   );
 };
+
 
 export default CompanySetup;

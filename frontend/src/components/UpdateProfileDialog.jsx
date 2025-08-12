@@ -15,6 +15,7 @@ import { USER_API_END_POINT } from "../utils/constant.js";
 import { setUser } from "../redux/authSlice.js";
 import { toast } from "sonner";
 
+
 const UpdateProfileDialog = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
   const { user } = useSelector((store) => store.auth);
@@ -184,5 +185,6 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     </div>
   );
 };
+
 
 export default UpdateProfileDialog;

@@ -6,6 +6,7 @@ import { Edit2, Eye, MoreHorizontal } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+
 const AdminJobsTable = () => { 
     const {allAdminJobs, searchJobByText} = useSelector(store=>store.job);
 
@@ -66,5 +67,6 @@ const AdminJobsTable = () => {
         </div>
     )
 }
+
 
 export default AdminJobsTable

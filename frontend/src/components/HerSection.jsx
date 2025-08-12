@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setSearchedQuery } from '../redux/jobSlice.js';
 import { useNavigate } from 'react-router-dom';
 
+
 const HeroSection = () => {
     const [query, setQuery] = useState("");
     const dispatch = useDispatch()
@@ -36,5 +37,6 @@ const HeroSection = () => {
         </div>
     )
 }
+
 
 export default HeroSection;

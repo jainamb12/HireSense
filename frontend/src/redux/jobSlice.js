@@ -32,6 +32,7 @@ const jobSlice = createSlice({
         }
     }
 });
+
 export const {
     setAllJobs,
     setSingleJob,
