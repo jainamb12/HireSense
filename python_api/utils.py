@@ -15,28 +15,63 @@ except OSError:
     nlp = spacy.load("en_core_web_sm")
 
 TECH_SKILLS = {
-    "python", "javascript", "typescript", "java", "c#", "c++", "ruby", "go",
-    "swift", "php", "html", "css", "sql", "r", "rust", "kotlin", "perl", "golang",
-    "c", "matlab", "react", "angular", "vue", "django", "flask", "express",
-    "nodejs", "node", "next.js", "nuxt.js", "nest.js", "spring", "spring boot",
-    "ruby on rails", ".net", "asp.net", "tailwind css", "bootstrap", "jquery",
-    "sass", "less", "aws", "amazon web services", "azure", "microsoft azure",
-    "gcp", "google cloud platform", "docker", "kubernetes", "jenkins", "gitlab",
-    "terraform", "ansible", "ci/cd", "devops", "cloud computing", "lambda", "ec2",
-    "s3", "azure devops", "mongodb", "mongo", "mysql", "postgresql", "postgres",
-    "sql server", "sqlite", "oracle", "cassandra", "redis", "firebase",
-    "machine learning", "ai", "artificial intelligence", "data science", "nlp",
-    "natural language processing", "deep learning", "pandas", "numpy", "scikit-learn",
-    "tensorflow", "pytorch", "data visualization", "powerbi", "tableau", "spark",
-    "hadoop", "cybersecurity", "network security", "firewall", "encryption",
-    "cryptography", "malware analysis", "penetration testing", "incident response",
-    "vulnerability assessment", "forensics", "siem", "security information and event management",
-    "git", "github", "gitlab", "jira", "agile", "scrum", "kanban", "restful apis",
-    "rest", "api", "microservices", "unit testing", "tdd", "documentation", "graphql",
-    "postman", "oauth", "jira", "confluence", "communication", "teamwork",
-    "problem-solving", "critical thinking", "adaptability", "leadership",
-    "collaboration", "time management", "project management", "attention to detail",
-    "creative", "analytical",
+    # Programming Languages
+    "python", "java", "javascript", "typescript", "c", "c++", "c#", "ruby", "go", "golang",
+    "swift", "objective-c", "php", "r", "rust", "kotlin", "scala", "perl", "matlab",
+    "bash", "shell scripting", "powershell",
+
+    # Frontend
+    "html", "css", "sass", "less", "tailwind css", "bootstrap", "jquery",
+    "react", "reactjs", "react.js", "nextjs", "next.js", "vue", "vuejs", "vue.js",
+    "angular", "angularjs", "angular.js", "nuxtjs", "nuxt.js", "ember.js", "svelte",
+
+    # Backend
+    "nodejs", "node", "express", "nestjs", "spring", "spring boot",
+    "django", "flask", "fastapi", "ruby on rails", ".net", "asp.net",
+    "laravel", "codeigniter", "symfony",
+
+    # Databases
+    "mysql", "postgres", "postgresql", "mongo", "mongodb", "sqlite",
+    "oracle", "cassandra", "redis", "dynamodb", "mariadb", "elasticsearch",
+    "firebase", "neo4j", "couchdb", "snowflake", "bigquery",
+
+    # Cloud
+    "aws", "amazon web services", "azure", "microsoft azure",
+    "gcp", "google cloud platform", "heroku", "digitalocean", "cloudflare",
+    "cloudformation", "terraform", "serverless", "lambda", "ec2", "s3",
+
+    # DevOps & Tools
+    "docker", "kubernetes", "jenkins", "git", "github", "gitlab", "bitbucket",
+    "ci/cd", "ansible", "puppet", "vagrant", "grafana", "prometheus",
+    "datadog", "splunk", "sonarqube", "nexus",
+
+    # Data Science / ML / AI
+    "machine learning", "ml", "deep learning", "dl", "artificial intelligence", "ai",
+    "data science", "data analysis", "nlp", "natural language processing",
+    "computer vision", "cv", "reinforcement learning",
+    "pandas", "numpy", "matplotlib", "seaborn",
+    "scikit-learn", "tensorflow", "tf", "pytorch", "pyt",
+    "keras", "huggingface", "transformers",
+    "powerbi", "tableau", "data visualization", "plotly",
+    "big data", "spark", "hadoop", "hive", "pig",
+
+    # Security
+    "cybersecurity", "network security", "firewall", "penetration testing",
+    "vulnerability assessment", "encryption", "cryptography",
+    "incident response", "malware analysis", "siem",
+
+    # APIs
+    "rest", "restful apis", "graphql", "postman", "swagger", "openapi",
+
+    # Project Management & Collaboration
+    "jira", "confluence", "trello", "slack",
+    "agile", "scrum", "kanban",
+
+    # Soft Skills (often in JDs)
+    "communication", "teamwork", "problem-solving", "critical thinking",
+    "leadership", "adaptability", "collaboration", "time management",
+    "project management", "attention to detail", "mentoring", "negotiation",
+    "presentation"
 }
 
 # --- MongoDB Client Setup ---

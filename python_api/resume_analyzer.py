@@ -21,10 +21,48 @@ def extract_skills(text: str) -> List[str]:
                 found_skills.add(skill_phrase)
 
     normalization_map = {
-        "node": "nodejs",
-        "mongo": "mongodb",
-        "postgres": "postgresql",
-    }
+    # Programming Abbreviations
+    "js": "javascript",
+    "ts": "typescript",
+    "py": "python",
+    "pyt": "pytorch",
+    "tf": "tensorflow",
+    "rb": "ruby",
+    "cpp": "c++",
+    "csharp": "c#",
+    "golang": "go",
+    "ml": "machine learning",
+    "dl": "deep learning",
+    "cv": "computer vision",
+    "ai": "artificial intelligence",
+
+    # Backend Aliases
+    "node": "nodejs",
+    "express.js": "express",
+    "nest": "nestjs",
+    "springboot": "spring boot",
+
+    # Database Aliases
+    "mongo": "mongodb",
+    "postgres": "postgresql",
+    "maria": "mariadb",
+    "dynamo": "dynamodb",
+
+    # Cloud Aliases
+    "gcp": "google cloud platform",
+    "aws": "amazon web services",
+    "azure": "microsoft azure",
+    "ec2": "ec2",
+    "s3": "s3",
+
+    # Tools
+    "ci": "ci/cd",
+    "cd": "ci/cd",
+    "gh": "github",
+    "git hub": "github",
+    "git lab": "gitlab",
+    "bit bucket": "bitbucket"
+}
     
     normalized_skills = {normalization_map.get(skill, skill) for skill in found_skills}
 

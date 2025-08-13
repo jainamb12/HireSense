@@ -54,12 +54,13 @@ const CompaniesTable = () => {
     filterCompany.map((company) => (
       <TableRow key={company._id}>
         <TableCell>
-          <Avatar>
+          <Avatar className="w-16 h-16 bg-white border">
             <AvatarImage
               src={
                 company.logo ||
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1024px-Microsoft_logo.svg.png"
               }
+              className="object-contain p-1"
             />
           </Avatar>
         </TableCell>
