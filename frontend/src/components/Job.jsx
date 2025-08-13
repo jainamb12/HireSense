@@ -47,7 +47,7 @@ const Job = ({job}) => {
             <AvatarImage
               src={job?.company?.logo}
               alt={`${job?.company?.name} Logo`}
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-contain object-center bg-gray-100"
             />
           </Avatar>
         </Button>
