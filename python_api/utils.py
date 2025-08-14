@@ -4,7 +4,6 @@ from io import BytesIO
 from pdfminer.high_level import extract_text
 from pymongo import MongoClient
 from config import settings
-import os
 
 # --- Shared Resources: SpaCy Model and Skills List ---
 try:
@@ -70,6 +69,8 @@ def get_all_skills() -> set:
 
 # This is our master list of all skills, used for extraction
 ALL_SKILLS = get_all_skills()
+SINGLE_WORD_SKILLS = {s for s in ALL_SKILLS if " " not in s}
+MULTI_WORD_SKILLS = {s for s in ALL_SKILLS if " " in s}
 
 # --- MongoDB Client Setup ---
 client = MongoClient(settings.mongo_details)
@@ -92,3 +93,8 @@ def extract_text_from_pdf(file_obj: BytesIO) -> str:
         return extract_text(file_obj)
     except Exception as e:
         raise ValueError(f"Failed to extract text from PDF: {e}")
+    
+def load_resume_text(url: str) -> str:
+    """Downloads a resume PDF from URL and returns extracted text."""
+    file_obj = download_file(url)
+    return extract_text_from_pdf(file_obj)
