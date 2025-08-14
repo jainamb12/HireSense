@@ -3,6 +3,7 @@ import requests
 from io import BytesIO
 from pdfminer.high_level import extract_text
 from pymongo import MongoClient
+from config import settings
 import os
 
 # --- Shared Resources: SpaCy Model and Skills List ---
@@ -75,7 +76,7 @@ TECH_SKILLS = {
 }
 
 # --- MongoDB Client Setup ---
-client = MongoClient("mongodb+srv://jainam121005:0ds1WTpR1V7qZeBy@cluster0.1zstuon.mongodb.net/")
+client = MongoClient(settings.mongo_details)
 db = client['test']
 job_collection = db['jobs']
 
