@@ -15,65 +15,61 @@ except OSError:
     download("en_core_web_sm")
     nlp = spacy.load("en_core_web_sm")
 
-TECH_SKILLS = {
-    # Programming Languages
-    "python", "java", "javascript", "typescript", "c", "c++", "c#", "ruby", "go", "golang",
-    "swift", "objective-c", "php", "r", "rust", "kotlin", "scala", "perl", "matlab",
-    "bash", "shell scripting", "powershell",
-
-    # Frontend
-    "html", "css", "sass", "less", "tailwind css", "bootstrap", "jquery",
-    "react", "reactjs", "react.js", "nextjs", "next.js", "vue", "vuejs", "vue.js",
-    "angular", "angularjs", "angular.js", "nuxtjs", "nuxt.js", "ember.js", "svelte",
-
-    # Backend
-    "nodejs", "node", "express", "nestjs", "spring", "spring boot",
-    "django", "flask", "fastapi", "ruby on rails", ".net", "asp.net",
-    "laravel", "codeigniter", "symfony",
-
-    # Databases
-    "mysql", "postgres", "postgresql", "mongo", "mongodb", "sqlite",
-    "oracle", "cassandra", "redis", "dynamodb", "mariadb", "elasticsearch",
-    "firebase", "neo4j", "couchdb", "snowflake", "bigquery",
-
-    # Cloud
-    "aws", "amazon web services", "azure", "microsoft azure",
-    "gcp", "google cloud platform", "heroku", "digitalocean", "cloudflare",
-    "cloudformation", "terraform", "serverless", "lambda", "ec2", "s3",
-
-    # DevOps & Tools
-    "docker", "kubernetes", "jenkins", "git", "github", "gitlab", "bitbucket",
-    "ci/cd", "ansible", "puppet", "vagrant", "grafana", "prometheus",
-    "datadog", "splunk", "sonarqube", "nexus",
-
-    # Data Science / ML / AI
-    "machine learning", "ml", "deep learning", "dl", "artificial intelligence", "ai",
-    "data science", "data analysis", "nlp", "natural language processing",
-    "computer vision", "cv", "reinforcement learning",
-    "pandas", "numpy", "matplotlib", "seaborn",
-    "scikit-learn", "tensorflow", "tf", "pytorch", "pyt",
-    "keras", "huggingface", "transformers",
-    "powerbi", "tableau", "data visualization", "plotly",
-    "big data", "spark", "hadoop", "hive", "pig",
-
-    # Security
-    "cybersecurity", "network security", "firewall", "penetration testing",
-    "vulnerability assessment", "encryption", "cryptography",
-    "incident response", "malware analysis", "siem",
-
-    # APIs
-    "rest", "restful apis", "graphql", "postman", "swagger", "openapi",
-
-    # Project Management & Collaboration
-    "jira", "confluence", "trello", "slack",
-    "agile", "scrum", "kanban",
-
-    # Soft Skills (often in JDs)
-    "communication", "teamwork", "problem-solving", "critical thinking",
-    "leadership", "adaptability", "collaboration", "time management",
-    "project management", "attention to detail", "mentoring", "negotiation",
-    "presentation"
+SKILL_CATEGORIES = {
+    "technical": {
+        "python", "java", "javascript", "typescript", "c", "c++", "c#", "ruby", "go", "golang",
+        "swift", "objective-c", "php", "r", "rust", "kotlin", "scala", "perl", "matlab",
+        "html", "css", "sass", "less", "tailwind css", "bootstrap", "jquery",
+        "react", "reactjs", "react.js", "nextjs", "next.js", "vue", "vuejs", "vue.js",
+        "angular", "angularjs", "angular.js", "nuxtjs", "nuxt.js", "ember.js", "svelte",
+        "nodejs", "node", "express", "nestjs", "spring", "spring boot",
+        "django", "flask", "fastapi", "ruby on rails", ".net", "asp.net",
+        "laravel", "codeigniter", "symfony",
+        "mysql", "postgres", "postgresql", "mongo", "mongodb", "sqlite",
+        "oracle", "cassandra", "redis", "dynamodb", "mariadb", "elasticsearch",
+        "firebase", "neo4j", "couchdb", "snowflake", "bigquery",
+        "aws", "amazon web services", "azure", "microsoft azure",
+        "gcp", "google cloud platform", "heroku", "digitalocean", "cloudflare",
+        "cloudformation", "terraform", "serverless", "lambda", "ec2", "s3",
+        "machine learning", "ml", "deep learning", "dl", "artificial intelligence", "ai",
+        "data science", "data analysis", "nlp", "natural language processing",
+        "computer vision", "cv", "reinforcement learning",
+        "pandas", "numpy", "matplotlib", "seaborn",
+        "scikit-learn", "tensorflow", "tf", "pytorch", "pyt",
+        "keras", "huggingface", "transformers",
+        "big data", "spark", "hadoop", "hive", "pig",
+        "cybersecurity", "network security", "firewall", "penetration testing",
+        "vulnerability assessment", "encryption", "cryptography",
+        "incident response", "malware analysis", "siem",
+        "rest", "restful apis", "graphql"
+    },
+    "tools": {
+        "docker", "kubernetes", "jenkins", "git", "github", "gitlab", "bitbucket",
+        "ci/cd", "ansible", "puppet", "vagrant", "grafana", "prometheus",
+        "datadog", "splunk", "sonarqube", "nexus",
+        "powerbi", "tableau", "data visualization", "plotly",
+        "postman", "swagger", "openapi",
+        "jira", "confluence", "trello", "slack",
+        "bash", "shell scripting", "powershell"
+    },
+    "soft_skills": {
+        "agile", "scrum", "kanban",
+        "communication", "teamwork", "problem-solving", "critical thinking",
+        "leadership", "adaptability", "collaboration", "time management",
+        "project management", "attention to detail", "mentoring", "negotiation",
+        "presentation"
+    }
 }
+
+def get_all_skills() -> set:
+    """Combines all skills from all categories into a single set."""
+    all_skills = set()
+    for category in SKILL_CATEGORIES.values():
+        all_skills.update(category)
+    return all_skills
+
+# This is our master list of all skills, used for extraction
+ALL_SKILLS = get_all_skills()
 
 # --- MongoDB Client Setup ---
 client = MongoClient(settings.mongo_details)

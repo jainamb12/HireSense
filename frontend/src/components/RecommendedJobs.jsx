@@ -50,11 +50,11 @@ const RecommendedJobs = () => {
                 <div className="flex items-center space-x-1">
                     <span className="text-gray-600">Skill Match:</span>
                     <span className={
-                        job.skill_coverage >= 80 ? "text-green-600"
-                        : job.skill_coverage >= 50 ? "text-yellow-600"
+                        job.keyword_coverage_score >= 80 ? "text-green-600"
+                        : job.keyword_coverage_score >= 50 ? "text-yellow-600"
                         : "text-gray-500" // Use a more neutral color for lower matches if not using red
                     }>
-                        {job.skill_coverage.toFixed(0)}%
+                        {(job.keyword_coverage_score || 0).toFixed(0)}%
                     </span>
                 </div>
 
@@ -62,7 +62,7 @@ const RecommendedJobs = () => {
                 <div className="flex items-center space-x-1">
                     <span className="text-gray-600">Relevance:</span>
                     <span className="text-gray-500 italic"> {/* Keep relevance more subdued */}
-                        {job.cosine_score.toFixed(1)}%
+                        {(job.keyword_tfidf_score || 0).toFixed(1)}%
                     </span>
                 </div>
             </div>

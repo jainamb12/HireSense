@@ -1,6 +1,6 @@
 import pandas as pd
 from typing import Dict, Any, List, Optional
-from utils import job_collection, TECH_SKILLS
+from utils import job_collection, ALL_SKILLS
 
 def get_job_analytics_data(
     location: Optional[str] = 'all',
@@ -33,8 +33,8 @@ def get_job_analytics_data(
         for req_list in df['requirements']:
             for req_str in req_list:
                 cleaned_requirements = [r.strip().replace('"', '') for r in req_str.split(',')]
-                # Filter skills to only include those in your TECH_SKILLS list for consistency
-                all_skills.extend([s for s in cleaned_requirements if s in TECH_SKILLS])
+                # Filter skills to only include those in your ALL_SKILLS list for consistency
+                all_skills.extend([s for s in cleaned_requirements if s in ALL_SKILLS])
         
         skill_counts = pd.Series(all_skills).value_counts().head(10).to_dict()
         top_skills_data = [{"skill": skill, "count": int(count)} for skill, count in skill_counts.items()]

@@ -26,7 +26,7 @@ const Job = ({job}) => {
     const resumeUrl = user?.profile?.resume;
     if (resumeUrl) {
       // Assuming 'job.description' is the full text of the job description
-      analyzeResume(resumeUrl, job.description);
+      analyzeResume(resumeUrl, job.description, job.requirements);
       setShowAnalysis(true);
     } else {
       alert("Please upload your resume to your profile first.");
@@ -83,42 +83,55 @@ const Job = ({job}) => {
       </div>
 
       {/* Conditional rendering for the analysis report */}
-      {showAnalysis && (
-        <div className="mt-4 p-4 border rounded-md">
-          <h3 className="text-xl font-bold mb-2">Analysis Report</h3>
-          {loading && <p className="text-gray-700">Analyzing your resume...</p>}
-          {error && <p className="text-red-500">Error: {error}</p>}
-          {data && (
-            <div>
-              <p className="text-lg">Overall Match Score: <span className="font-semibold">{data.overall_match_score}%</span></p>
+      {/* Replace your entire analysis block with this one */}
+{showAnalysis && (
+  <div className="mt-4 p-4 border rounded-md bg-gray-50">
+    <h3 className="text-xl font-bold mb-2">Analysis Report</h3>
+    {loading && <p className="text-gray-700">Analyzing your resume...</p>}
+    {error && <p className="text-red-500">Error: {error}</p>}
+    {data && (
+      <div>
+        {/* Use the correct score name */}
+        <p className="text-lg">
+          Overall Fit Score: <span className="font-semibold">{(data.overall_fit_score || 0).toFixed(1)}%</span>
+        </p>
 
-              {/* Matching Skills */}
-              <h4 className="font-semibold mt-4">Matching Skills:</h4>
-              <ul className="list-disc ml-6">
-                {data.matching_skills.map(skill => (
-                  <li key={skill} className="text-green-600 font-medium">{skill}</li>
-                ))}
-              </ul>
+        {/* Display Missing MUST-HAVE Skills */}
+        <h4 className="font-semibold mt-4">Missing Must-Have Skills:</h4>
+        {data.missing_must_have_skills?.length > 0 ? (
+          <ul className="list-disc ml-6">
+            {data.missing_must_have_skills.map(skill => (
+              <li key={skill} className="text-red-600 font-medium">{skill}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-gray-500">None! You meet all core requirements.</p>
+        )}
 
-              {/* Missing Skills */}
-              <h4 className="font-semibold mt-4">Missing Skills:</h4>
-              <ul className="list-disc ml-6">
-                {data.missing_skills.map(skill => (
-                  <li key={skill} className="text-red-600 font-medium">{skill}</li>
-                ))}
-              </ul>
+        {/* Display Missing GOOD-TO-HAVE Skills */}
+        <h4 className="font-semibold mt-4">Missing Good-to-Have Skills:</h4>
+        {data.missing_good_to_have_skills?.length > 0 ? (
+          <ul className="list-disc ml-6">
+            {data.missing_good_to_have_skills.map(skill => (
+              <li key={skill} className="text-yellow-600 font-medium">{skill}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-gray-500">None.</p>
+        )}
 
-              {/* Suggestions */}
-              <h4 className="font-semibold mt-4">Actionable Suggestions:</h4>
-              <ul className="list-disc ml-6 text-gray-700">
-                {data.actionable_suggestions.map((s, index) => (
-                  <li key={index}>{s}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      )}
+
+        {/* Suggestions - This part was already correct */}
+        <h4 className="font-semibold mt-4">Actionable Suggestions:</h4>
+        <ul className="list-disc ml-6 text-gray-700">
+          {data.actionable_suggestions?.map((s, index) => (
+            <li key={index}>{s}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+)}
     </div>
   );
 };

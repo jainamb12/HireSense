@@ -34,6 +34,7 @@ class MatchRequest(BaseModel):
 class ResumeAnalysisRequest(BaseModel):
     resume_url: str
     job_description: str
+    job_requirements: List[str]
 
 # --- API Endpoints ---
 @app.post("/match-jobs")
@@ -47,10 +48,25 @@ def match_jobs(request: MatchRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
 
+# @app.post("/analyze-resume-fit")
+# async def analyze_resume_fit_endpoint(request: ResumeAnalysisRequest):
+#     try:
+#         report = analyze_resume_fit_logic(request.resume_url, request.job_description)
+#         return report
+#     except ValueError as e:
+#         raise HTTPException(status_code=400, detail=str(e))
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
+
 @app.post("/analyze-resume-fit")
 async def analyze_resume_fit_endpoint(request: ResumeAnalysisRequest):
     try:
-        report = analyze_resume_fit_logic(request.resume_url, request.job_description)
+        # UPDATE THE FUNCTION CALL to pass the new argument
+        report = analyze_resume_fit_logic(
+            request.resume_url, 
+            request.job_description,
+            request.job_requirements
+        )
         return report
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))

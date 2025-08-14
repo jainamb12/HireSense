@@ -55,7 +55,7 @@ export const matchJobs = async (req, res, next) => {
 
 export const analyzeResumeFit = async (req, res, next) => {
   try {
-    const { resume_url, job_description } = req.body;
+    const { resume_url, job_description, job_requirements } = req.body;
 
     if (!resume_url || !job_description) {
       return res.status(400).json({ message: "Resume URL and job description are required." });
@@ -65,6 +65,7 @@ export const analyzeResumeFit = async (req, res, next) => {
     const { data } = await axios.post(`${AI_BASE}/analyze-resume-fit`, {
       resume_url,
       job_description,
+      job_requirements
     });
 
     return res.json(data);

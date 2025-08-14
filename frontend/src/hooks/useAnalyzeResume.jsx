@@ -6,13 +6,14 @@ export const useAnalyzeResume = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const analyzeResume = async (resumeUrl, jobDescription) => {
+  const analyzeResume = async (resumeUrl, jobDescription, jobRequirements) => {
     setLoading(true);
     setError(null);
     try {
       const response = await axios.post('http://localhost:8888/api/ai/analyze-resume', {
         resume_url: resumeUrl,
         job_description: jobDescription,
+        job_requirements: jobRequirements
       }, {
         withCredentials: true,
       });
