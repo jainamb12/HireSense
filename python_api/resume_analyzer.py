@@ -3,27 +3,36 @@ from typing import List, Dict, Any, Set
 from utils import ALL_SKILLS, SKILL_CATEGORIES, nlp
 from semantic_matcher import calculate_semantic_similarity
 from utils import load_resume_text
-from utils import SINGLE_WORD_SKILLS, MULTI_WORD_SKILLS
+from utils import SINGLE_WORD_SKILLS, MULTI_WORD_SKILLS, SKILL_NORMALIZATION_MAP
 
 def extract_skills(text: str) -> List[str]:
+    """
+    Extracts and normalizes skills from text to handle variations.
+    """
     processed_text = text.lower().replace('.', ' ').replace('-', ' ')
-    doc = nlp(processed_text)
     found_skills = set()
-    # 1. Use spaCy's lemmatization for efficient single-word skill matching
-    for token in doc:
-        # Check the base form of the word (lemma) against our skills list
-        if token.lemma_ in SINGLE_WORD_SKILLS:
-            found_skills.add(token.lemma_)
 
-    # 2. Use regex for multi-word skills that lemmatization might miss
-    for skill in MULTI_WORD_SKILLS:
-        if " " in skill: # Only check for phrases
-            pattern = r'\b' + r'\s*'.join(re.escape(c) for c in skill) + r'\b'
-            if re.search(pattern, processed_text, re.IGNORECASE):
-                found_skills.add(skill)
+    # Search for all possible skills from our master list
+    for skill in ALL_SKILLS:
+        pattern = r'\b' + re.escape(skill).replace(r'\ ', r'\s*') + r'\b'
+        if re.search(pattern, processed_text):
+            found_skills.add(skill)
+            
+    # Also search for aliases from our normalization map
+    for alias, standard_form in SKILL_NORMALIZATION_MAP.items():
+        pattern = r'\b' + re.escape(alias).replace(r'\ ', r'\s*') + r'\b'
+        if re.search(pattern, processed_text):
+            found_skills.add(standard_form) # Add the standard form!
 
-    # Note: Normalization logic can be added here if needed
-    return sorted(list(found_skills))
+    # Final pass to normalize everything found
+    normalized_found_skills = {
+        SKILL_NORMALIZATION_MAP.get(skill, skill) for skill in found_skills
+    }
+
+    # Only return skills that are in our master list
+    final_skills = normalized_found_skills.intersection(ALL_SKILLS)
+    
+    return sorted(list(final_skills))
 
 def generate_smart_advice(missing_skills: Set[str]) -> List[str]:
     """Generates contextual advice based on the category of the missing skill."""

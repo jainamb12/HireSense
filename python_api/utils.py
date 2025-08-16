@@ -60,6 +60,20 @@ SKILL_CATEGORIES = {
     }
 }
 
+SKILL_NORMALIZATION_MAP = {
+    "node": "nodejs",
+    "reactjs": "react",
+    "react.js": "react",
+    "nextjs": "next.js",
+    "vuejs": "vue",
+    "angularjs": "angular",
+    "rest apis": "restful apis",
+    "aws": "amazon web services",
+    "gcp": "google cloud platform",
+    "mongo": "mongodb",
+    # Add any other aliases you can think of here
+}
+
 def get_all_skills() -> set:
     """Combines all skills from all categories into a single set."""
     all_skills = set()

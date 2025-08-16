@@ -22,9 +22,9 @@ const Home = () => {
     return(
         <div>
             <Navbar/>
-            <RecommendedJobs/>
             <HeroSection/>
             <CategoryCarousel/>
+            <RecommendedJobs/>
             <LatestJobs/>
             <Footer/>
         </div>
