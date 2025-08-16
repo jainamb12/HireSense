@@ -36,7 +36,7 @@ def match_resume_to_jobs(resume_url: str, jobs: list[dict]) -> list[dict]:
     results = []
     for job in jobs:
         # Combine job title and description for a better semantic match
-        job_full_text = f"{job.get('title', '')}. {job.get('description', '')}"
+        job_full_text = f"{job.get('title', '')}. {job.get('description', '')}. {' '.join(job.get('requirements', []))}"
 
         # Clean requirements for keyword matching
         cleaned_requirements = []

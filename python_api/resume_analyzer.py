@@ -18,7 +18,8 @@ def extract_skills(text: str) -> List[str]:
     # 2. Use regex for multi-word skills that lemmatization might miss
     for skill in MULTI_WORD_SKILLS:
         if " " in skill: # Only check for phrases
-            if re.search(r'\b' + re.escape(skill) + r'\b', processed_text):
+            pattern = r'\b' + r'\s*'.join(re.escape(c) for c in skill) + r'\b'
+            if re.search(pattern, processed_text, re.IGNORECASE):
                 found_skills.add(skill)
 
     # Note: Normalization logic can be added here if needed
