@@ -61,17 +61,59 @@ SKILL_CATEGORIES = {
 }
 
 SKILL_NORMALIZATION_MAP = {
-    "node": "nodejs",
+    # --- Programming & Frontend ---
+    "js": "javascript",
+    "ts": "typescript",
+    "py": "python",
     "reactjs": "react",
     "react.js": "react",
     "nextjs": "next.js",
     "vuejs": "vue",
+    "vue.js": "vue",
     "angularjs": "angular",
-    "rest apis": "restful apis",
+    "angular.js": "angular",
+    "tailwind": "tailwind css",
+
+    # --- Backend ---
+    "node": "nodejs",
+    "expressjs": "express",
+    "express.js": "express",
+    ".net core": ".net",
+    "rails": "ruby on rails",
+
+    # --- Databases ---
+    "mongo": "mongodb",
+    "postgres": "postgresql",
+    
+    # --- Cloud & DevOps ---
     "aws": "amazon web services",
     "gcp": "google cloud platform",
-    "mongo": "mongodb",
-    # Add any other aliases you can think of here
+    "azure": "microsoft azure",
+    "k8s": "kubernetes",
+    "ci": "ci/cd",
+    "cd": "ci/cd",
+    "git hub": "github",
+    "git lab": "gitlab",
+
+    # --- AI/ML & Data Science ---
+    "ai": "artificial intelligence",
+    "ml": "machine learning",
+    "dl": "deep learning",
+    "natural language processing": "nlp",
+    "computer vision": "cv",
+    "tf": "tensorflow",
+    "pytorch": "pytorch", # Assuming 'pytorch' is the standard form in your list
+    "sci-kit learn": "scikit-learn",
+    
+    # --- APIs ---
+    "rest api": "restful apis",
+    "rest apis": "restful apis",
+
+    # --- General ---
+    "data structures": "data structures", # Handles "Data Structures and Algorithms"
+    "dsa": "data structures",
+    "object oriented programming": "oops",
+    "dbms": "dbms", # Already standard but good to have
 }
 
 def get_all_skills() -> set:
