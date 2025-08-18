@@ -5,9 +5,19 @@ from datetime import datetime
 from resume_matcher import match_resume_to_jobs
 from resume_analyzer import analyze_resume_fit as analyze_resume_fit_logic
 from job_analytics import get_job_analytics_data
+from fastapi.middleware.cors import CORSMiddleware
+import os
 
 # --- FastAPI App ---
 app = FastAPI()
+
+allowed_origin = os.getenv("BACKEND_URL")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[allowed_origin] if allowed_origin else ["*"],
+    # ... other options
+)
 
 # --- Pydantic Models ---
 class Company(BaseModel):

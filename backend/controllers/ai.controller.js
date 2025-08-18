@@ -2,7 +2,7 @@ import axios from "axios";
 import { Job } from "../models/job.model.js";
 import { User } from "../models/user.model.js";
 
-const AI_BASE = "http://127.0.0.1:8000";
+const AI_BASE = process.env.PYTHON_API_URL;
 
 export const matchJobs = async (req, res, next) => {
   try {
