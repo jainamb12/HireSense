@@ -1,2 +1,13 @@
-fastapi
-uvicorn
+fastapi==0.116.1
+uvicorn[standard]
+numpy==2.3.2
+pandas==2.3.1
+pdfminer==20191125
+pdfminer_six==20250506
+pydantic==2.11.7
+pydantic_settings==2.10.1
+pymongo==4.14.0
+Requests==2.32.4
+scikit_learn==1.7.1
+sentence_transformers==5.1.0
+spacy==3.8.7
