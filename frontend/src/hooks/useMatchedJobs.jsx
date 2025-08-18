@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { AI_API_END_POINT } from "../utils/constant";
 
 export const useMatchedJobs = () => {
   const [matches, setMatches]   = useState([]);
@@ -9,7 +10,7 @@ export const useMatchedJobs = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get("http://localhost:8888/api/ai/match-jobs", { withCredentials: true });
+        const { data } = await axios.get(`${AI_API_END_POINT}/match-jobs`, { withCredentials: true });
         console.log("AI matches response:", data);
         const jobArray = Array.isArray(data) ? data : data.matched_jobs ?? [];
         setMatches(jobArray);

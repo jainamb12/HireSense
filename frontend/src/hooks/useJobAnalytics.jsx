@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { AI_API_END_POINT } from '@/utils/constant';
 
 export const useJobAnalytics = (location, job_type) => {
   const [data, setData] = useState(null);
@@ -13,7 +14,7 @@ export const useJobAnalytics = (location, job_type) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get('http://localhost:8888/api/ai/job-analytics', {
+        const response = await axios.get(`${AI_API_END_POINT}/job-analytics`, {
           params: { location, job_type },
           withCredentials: true,
         });

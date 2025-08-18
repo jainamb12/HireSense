@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { AI_API_END_POINT } from '@/utils/constant';
 
 export const useAnalyzeResume = () => {
   const [data, setData] = useState(null);
@@ -10,7 +11,7 @@ export const useAnalyzeResume = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('http://localhost:8888/api/ai/analyze-resume', {
+      const response = await axios.post(`${AI_API_END_POINT}/analyze-resume`, {
         resume_url: resumeUrl,
         job_description: jobDescription,
         job_requirements: jobRequirements
