@@ -109,4 +109,4 @@ HireSense is built on a modern **microservice architecture** to ensure scalabili
 
 **Jainam Bhavsar**
 -   **GitHub:** [@jainamb12](https://github.com/jainamb12)
--   **LinkedIn:** [linkedin.com/in/jainam-bhavsar-lj](https://linkedin.com/in/jainam-bhavsar-lj)
+-   **LinkedIn:** [linkedin.com/in/jainambhavsar](https://linkedin.com/in/jainambhavsar)
